@@ -1,51 +1,54 @@
 ![README](src/port.jpg)
 
-# Proyecto Individual 1 Machine Learning Operations
+# Proyecto Individual 2 D.A. Siniestros Viales Ciudad Autónoma de Buenos Aires
 
-En el presente repositorio se desarrolla un **Producto Mínimo Viable** para la gestión y manejo de datos de una plataforma de videojuegos y aplicaciones en línea, conocida popularmente como **Steam**.
+En el presente repositorio se desarrolla un **análisis** de la problematica de siniestralidad en la capital de Argentina desde el rol de **Analista de Datos** para la Subsecretaría de Planificación de La Movilidad.
 
 ![Int](src/R1.jpg)
 
 ## Introducción
 
-La compañía Steam le solicita al equipo de trabajo de Data crear un producto básico que le permita probar un sistema de consulta en línea, a tráves de una API. Para esto la gerencia de la compañía les ha entregado 3 datasets que contienen información histórica de aplicaciones en línea, para que el equipo transforme estos datos y los convierta en información para la toma de decisiones de la compañía.
+La Subsecretaría de Planificación de la Movilidad ha solicitado al analista de datos extraer los datos de siniestros viales de Lesiones y Homicidios ocurridos en la ciudad que se encuentran disponibles en la página oficial de datos del gobierno de Buenos Aires, y a partir de esta extracción, transformar los datos adecuadamente para encontrar información valiosa sobre los hechos ocurridos y sus victimas. Luego de esta transformación, el analista realiza una exploración inicial de los datos para encontrar patrones en los datos y tomar decisiones de como representarlos. Finalmente, el analista diseña un dashboard que le permita a la ciudadanía de Buenos Aires y al Secretario de Movilidad extraer información y tomar decisiones al respecto sobre lo que debe hacer para mejorar el problema.
 
 ### - Objetivos del proyecto
 
-- Extraer, transformar y cargar los datos en un dataset.
-- Realizar un análisis exploratorio de los datos, para observar patrones y tendencias estadísticas.
-- Crear una API que facilite las consultas sin necesidad de que el usuario escriba código.
-- Crear un sistema de recomendación.
+- Extraer, transformar y cargar los datos en un dataset usando la librería de **Pandas**.
+- Realizar un análisis exploratorio de los datos, para observar patrones y tendencias estadísticas usando la librería de **Seaborn y matplotlib**.
+- Crear un dashboard en **PowerBi** con los principales insights de los datos recopilados.
+- Crear **Indicadores Clave de Rendimiento (KPI)** que permitan evaluar el comportamiento y avance de las metas planteadas por la Subsecretaría de Planificación de la Movilidad para reducir los niveles de siniestralidad en los últimos periodos.
 
 
 ### Funciones desde el rol
 
-- Extraer los datos en un formato que facilite la consulta.
+- Extraer los datos en un formato que facilite la consulta (**csv**)
 - Transformar los datos (primarios), identificando valores nulos, vacíos y errores que afecten el análisis de los mismos y tomar medidas con argumentos bien justificados.
 - Cargar los datos limpios.
-- Realizar un análisis exploratorio de los datos para identificar patrones, anomalís, outliers, medidas relevantes y comparar comportamientos de los datos.
-- Crear una API sencilla, en menos de una semana, que sea el puente que facilite la consulta al cliente final.
-- Crear un sistema de recomendación (Modelo de Aprendizaje Automático) que le permita al usuario, en base a algoritmos, obtener aplicaciones similares a su búsqueda.
-- Crear un video al equipo de trabajo para entender el manejo de la API en línea.
-- Documentar cada una de las decisiones tomadas durante el ejercicio del producto.
+- Realizar un análisis exploratorio de los datos para identificar patrones, anomalías, outliers, medidas relevantes y comparar comportamientos de los datos.
+- Crear un tablero de presentación dinámico, con tonos de color apropiados y excelentes visualizaciones que permitan extraer información rápidamente.
+
 
 ![r2](src/r2.jpg)
 
 ## Descripción de la fuente de los datos
 
-La genrencia de tecnología ha entregado al equipo de Científicos de datos 3 archivos de datos JSON comprimidos, que el equipo debe extraer eficientemente y tomar decisiones con respecto a estos.
+La plataforma de datos abiertos de la ciudad de Buenos Aires en el apartado de ![Siniestros Viales](https://data.buenosaires.gob.ar/dataset/victimas-siniestros-viales) tiene bases de datos que contienen registros de indicentes viales comprendidos entre los años 2016 y 2021. A Continuación se hace una descripción de los mismos:
 
-- ### steam_games.json.gz
+- ### Lesiones.xlsx
 
-    Este [dataset](datasets/steam_games.json.gz) contiene toda la información asociada a las aplicaciones que se encuentran registradas en la plataforma de Steam, el equipo debe decidir que datos son relevantes para el desarrollo de la API y el sistema de recomendación.
+    Este [dataset](datasets/lesionesCABA.xlsx) contiene toda la información asociada a los hechos de siniestros donde hubo victimas con **lesiones personales**, contiene dos tablas (Hechos) y (Victimas).
 
-- ### user_reviews.json.gz
+    - Hechos: Contiene los registros de cada uno de los siniestros presentados entre 2019 y 2021 en el perimetro de la ciudad con localización, fecha y actores involucrados.
 
-    Este [dataset](datasets/user_reviews.json.gz) contiene toda la información asociada a las reseñas que los usuarios han creado en base al uso de las aplicaciones, este archivo contiene datos anidados por lo que se debe ser cuidadoso al momento de transformarlos.
+    - Victimas: Contiene los registros de cada una de las victimas registradas en la base de datos que fueron victimas de los hechos con información importante como su genero, edad y actor.
 
-- ### users_items.json.gz
+- ### Homicidios.xlsx
 
-    Este [dataset](datasets/users_items.json.gz) contiene toda la información asociada a las actividades de los usuarios en la plataforma, tiempo de actividad por cada aplciación que han usado y un conteo de las aplicaciones adquiridas (Free o pago), este archivo contiene datos anidados por lo que se debe ser cuidadoso al momento de transformarlos.
+    Este [dataset](datasets/homicidiosCABA.xlsx) contiene toda la información asociada a los hechos de siniestros donde hubo victimas **fallecidas**, contiene dos tablas (Hechos) y (Victimas).
+
+    - Hechos: Contiene los registros de cada uno de los siniestros presentados entre 2016 y 2021 en el perimetro de la ciudad con localización, fecha y actores involucrados.
+
+    - Victimas: Contiene los registros de cada una de las victimas registradas en la base de datos que fallecieron con información importante como su genero, edad y actor.
+
 
 ![r3](src/r3.jpg)
 
@@ -56,6 +59,20 @@ A continuación se hace una descripción y resumen de la metodología de trabajo
 - ### Requerimientos y cronograma
 
     En primera medida el equipo de trabajo hace una revisión de los productos a entregar con el fin de establecer un cronograma ajustado a las necesidades de entrega.
+    
+    | Variable            | Definición                                               |Tipo de Dato| Tipo de Variable       |
+    |:--------------------|:---------------------------------------------------------|:----------:|:-----------------------|
+    | IdSiniestro         | Identificador único del siniestro                        | Integer    | Categórica(nominal) PK |
+    | Gravedad            | Si el siniestro tuvo muertos, heridos o solo daños       | Integer    | Categórica(nominal)    |
+    | NumeroVictimas      | Cantidad total de personas afectadas por el siniestro    | Integer    | Numérica(discréta)     |
+    | Año                 | Año en el que sucedió el siniestro                       | String     | Categórica(ordinal)    |
+    | Mes                 | Mes en el que sucedió el siniestro                       | String     | Categórica(ordinal)    |
+    | Dia                 | Día en el que sucedió el siniestro                       | String     | Catégorica(ordinal)    |
+    | Hora                | Hora del día en que sucedió el siniestro                 | String     | Categórica(ordinal)    |
+    | IdTransporteVictima | Id del vehículo que fue víctima del accidente            | Integer    | Categórica(Nominal) FK |
+    | IdTransporteAcusado | Id del vehículo acusado como causante del accidente      | Integer    | Categórica(Nominal) FK |
+    | Fecha               | Fecha completa                                           | DateTime   | Categórica(ordinal)    |
+    | DiaSemana           | Dia de la semana en que sucedió el siniestro             | String     | Categórica(nominal)    |
 
     - **Día 1** : Revisión de los datasets entregados,  opciones de descompresión, limitaciones de procesamiento y estructura de los datos.
 
