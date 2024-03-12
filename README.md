@@ -31,7 +31,7 @@ La Subsecretaría de Planificación de la Movilidad ha solicitado al analista de
 
 ## Descripción de la fuente de los datos
 
-La plataforma de datos abiertos de la ciudad de Buenos Aires en el apartado de ![Siniestros Viales](https://data.buenosaires.gob.ar/dataset/victimas-siniestros-viales) tiene bases de datos que contienen registros de indicentes viales comprendidos entre los años 2016 y 2021. A Continuación se hace una descripción de los mismos:
+La plataforma de datos abiertos de la ciudad de Buenos Aires en el apartado de [Siniestros Viales](https://data.buenosaires.gob.ar/dataset/victimas-siniestros-viales) tiene bases de datos que contienen registros de indicentes viales comprendidos entre los años 2016 y 2021. A Continuación se hace una descripción de los mismos:
 
 - ### Lesiones.xlsx
 
@@ -58,61 +58,48 @@ A continuación se hace una descripción y resumen de la metodología de trabajo
 
 - ### Requerimientos y cronograma
 
-    En primera medida el equipo de trabajo hace una revisión de los productos a entregar con el fin de establecer un cronograma ajustado a las necesidades de entrega.
+    En primera medida el analista hace una revisión de los productos a entregar con el fin de establecer un cronograma ajustado a las necesidades de entrega.
     
-    | Variable            | Definición                                               |Tipo de Dato| Tipo de Variable       |
-    |:--------------------|:---------------------------------------------------------|:----------:|:-----------------------|
-    | IdSiniestro         | Identificador único del siniestro                        | Integer    | Categórica(nominal) PK |
-    | Gravedad            | Si el siniestro tuvo muertos, heridos o solo daños       | Integer    | Categórica(nominal)    |
-    | NumeroVictimas      | Cantidad total de personas afectadas por el siniestro    | Integer    | Numérica(discréta)     |
-    | Año                 | Año en el que sucedió el siniestro                       | String     | Categórica(ordinal)    |
-    | Mes                 | Mes en el que sucedió el siniestro                       | String     | Categórica(ordinal)    |
-    | Dia                 | Día en el que sucedió el siniestro                       | String     | Catégorica(ordinal)    |
-    | Hora                | Hora del día en que sucedió el siniestro                 | String     | Categórica(ordinal)    |
-    | IdTransporteVictima | Id del vehículo que fue víctima del accidente            | Integer    | Categórica(Nominal) FK |
-    | IdTransporteAcusado | Id del vehículo acusado como causante del accidente      | Integer    | Categórica(Nominal) FK |
-    | Fecha               | Fecha completa                                           | DateTime   | Categórica(ordinal)    |
-    | DiaSemana           | Dia de la semana en que sucedió el siniestro             | String     | Categórica(nominal)    |
+    | Día       | Tareas a realizar                                               | Actividad              |
+    |:----------|:----------------------------------------------------------------|:----------------------:|
+    | Miercoles | Revisión de los requerimientos, las solicitudes y los datasets  | Organización           | 
+    | Jueves    | Transformación de los datos y modelo relacional                 | ETL                    | 
+    | Viernes   | Análisis Exploratorio de los datos                              | EDA                    | 
+    | Sábado    | Definición de paleta de colores y estructura de la presentación | Storytelling           | 
+    | Domingo   | Creación de gráficos base y elección de gráficos                | Visualización de datos |
+    | Lunes     | Creación de KPIs, revisión general del proyecto                 | KPIs                   | 
+    | Martes    | Detalle de los gráficos y creación de iconos                    | Visualización de datos | 
 
-    - **Día 1** : Revisión de los datasets entregados,  opciones de descompresión, limitaciones de procesamiento y estructura de los datos.
-
-    - **Día 2 y 3** : Extracción, Carga y Transformación de los datos brutos, toma de decisiones con respecto a valores nulos, atípicos y valores vacíos. Análisis Exploratorio de Datos también se realiza en esta etapa ya que son procesos sincrónicos.
-    - **Día 4** : Se revisan las solicitudes de consulta para la API y se construyen las funciones localmente para evaluar su funcionamiento.
-    - **Día 5** : Se realiza el despliegue de la API localmente, para revisar estructura y outputs.
-    - **Día 6 y 7**: Fin de semana.
-    - **Día 8**: Evaluación de los deploys en nube y carga de la API en línea.
-    - **Día 9**: Ajustes, documentación y carga de los archivos a gerencia.
-    - **Día 10**: Presentación del producto.
 
 - ### Extracción, Transformación y Carga (ETL)
 
-    Con el fin de realizar un trabajo organizado y debidamente documentado, el ETL se dividió en los 3 conjuntos de datos entregados.
+    Con el fin de realizar un trabajo organizado y debidamente documentado, el proceso de transformación de los datos se documentó en el cuadernillo [ETL](01_ETL.ipynb). Este cuadernillo tiene 5 outputs guardados en la carpeta dataout:
 
-    - **01_ETL_Steam_games**: Proceso [ETL](01_ETL_Steam_games.ipynb) para el dataset que contiene información asociada a los videojuegos. Este archivo tiene tres outputs: **out_games.parquet**, **out_genres_games.parquet** y **out_metadata_games.parquet**.
+    - **actores.csv**: Este [dataset](dataout/actores.csv) tiene la lista de los actores identificados durante el proceso de ETL, los actores viales se refieren a las personas que interactúan en la vía y no a los modos o vehiculos que ellos usan.
 
-    - **02_ETL_Users_items**: Proceso [ETL](02_ETL_Users_items.ipynb) para el dataset que contiene información asociada a las actividades de los usuarios. Este archivo tiene dos outputs: **out_users_items.parquet** y **out_users.parquet**.
+    - **modos.csv**: Este [dataset](dataout/modos.csv) tiene la lista de los modos o medios de transporte que usan los actores para movilizarse.
 
-    - **03_ETL_Users_reviews**: Proceso [ETL](03_ETL_Users_reviews.ipynb) para el dataset que contiene información asociada las reseñas de las aplicaciones. Este archivo tiene dos outputs: **out_users_reviews.parquet** y **out_feelings.parquet**, este último es el resultado de un análisis de sentimientos 
+    - **siniestrosCABA.csv**: Este [dataset](dataout/siniestrosCABA.csv) tiene la lista de siniestros compilada de los datasets originales y que incluye una nueva columna determinada como Gravedad, que establece la gravedad del siniestro dependiendo de la gravedad de sus victimas.
 
-    Los datasets resultantes se guardaron en la carpeta dataout en formato parquet, un formato de archivos que utiliza menos espacio en memoria y es fácil de extraer desde **Pandas**.
+    - **siniestrosLocs.csv**: Este [dataset](dataout/siniestrosLocs.csv) es una extensión del dataset siniestrosCABA y que permite detallar la ubicación de los siniestros por geolocalización y otros datos como la comuna.
+
+    - **victimasCABA.csv**: Este [dataset](dataout/victimasCABA.csv) tiene la lista de victimas compilada de los datasets originales y que incluye una columna sobre la Gravedad de la Victima, así como una aclaración sobre el tipo de actor.
 
 - ### Análisis Exploratorio de Datos (EDA)
 
-    Es importante mencionar que en los archivos ETL se realizó un EDA inicial, ya que el equipo del proyecto considera estos dos procesos como sincrónicos. En el EDA inicial se exploran las variables y sus tipos, las relaciones de las variables y un conteo de valores nulos y duplicados.
+    Es importante mencionar que en los archivos ETL se realizó un EDA inicial, ya que el analistas del proyecto considera estos dos procesos como sincrónicos. En el EDA inicial se exploran las variables y sus tipos, las relaciones de las variables y un conteo de valores nulos y duplicados.
     
-    Sin embargo, en este [cuadernillo](04_EDA.ipynb) se realiza un EDA usando librerías como Matplotlib y Seaborn para visualizar los datos gráficamente y entender mejor los patrones.
+    Sin embargo, en este [cuadernillo](02_EDA.ipynb) se realiza un EDA usando librerías como Matplotlib y Seaborn para visualizar los datos gráficamente y entender mejor los patrones.
 
     De este proceso no surgen datasets, solo el cuadernillo con los hallazgos de este proceso.
 
-- ### Creación de Funciones
+- ### Creación del dashboard
 
-    Con el fin de documentar el proceso de creación de cada una de las funciones que ejecutarán las consultas de la API, se crea este [documento](05_Funciones.ipynb).
+    Con el fin de crear una visualización profesional, se establece una estructura de la presentación y se definen algunos parametros clave para seguir durante el diseño de la presentación. Por un lado se establece la gama de colores a utilizar y un diseño que resalte a la vista lo que se desea mostrar usando herramientas como el patrón Z. Se establecen las fuentes de cada uno de los textos y su tamaño.
 
-    En este cuadernillo se importan los datasets de la carpeta dataout para ser procesados y mejorar su rendimiento en función de las necesidades de las consultas.
+    - **Paleta de colores**: Para esta presentación se usaron tonos azules y rojos, el azul con dar a la presentación seriedad y profesionalismo. Y los tonos rojos para destacar aspectos importantes y descubrimientos que se quiere mostrar al espectador.
 
-    Se crearon cada una de las funciones solicitadas por la gerencia, estableciendo los datasets que se usan y creando un dataset único para las necesidades de la funciones  de consulta. 
-
-    - **developer(developerName)**: Esta función recibe como argumento el nombre de un desarrollador y devuelve un diccionario con la cantidad de Apps lanzadas por año y el porcentaje de contenido gratis sobre el total de aplicaciones lanzadas por año.
+    ![r1](vis/1.jpg)
 
     - **userData(idUsuario)**: Esta función recibe como argumento el id del usuario y devuelve un diccionario con la cantidad de dinero gastado por ese usuario en la adquisición de aplicaciones, el porcentaje de recomendación de las apps que compró y la cantidad de apps que adquirió.
 
@@ -124,15 +111,7 @@ A continuación se hace una descripción y resumen de la metodología de trabajo
 
     Los datasets resultantes se guardaron en la carpeta datafunc en formato parquet, un formato de archivos que utiliza menos espacio en memoria y es fácil de extraer desde **Pandas**.
 
-- ### Modelo Machine Learning (Sistema de Recomendación)
 
-    Con el fin de documentar el proceso de creación de modelo de aprendizaje basado en recomendaciones se crea este [cuadernillo](06_Modelo_ML.ipynb) que contiene los pasos para la creación de este modelo.
-
-    Se crea este modelo en base a la similitud del coseno, se realiza una revisión de referencias a este tema, como el siguiente [video](https://www.youtube.com/watch?v=NlNH4AmIF5o&pp=ygUUc2ltaWxpdHVkIGRlbCBjb3Nlbm8%3D):
-
-    Se utiliza el dataframe Genres y Games que contienen información relevante para este proceso.
-
-    El dataset resultante similitudes es una matriz de similitud que contiene tanto en columnas como en filas cada uno de los IdAPP únicos y establece un porcentaje de similitud con cada una de las apps.
 
 - ### Creación API localmente
 
