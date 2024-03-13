@@ -1,10 +1,10 @@
-![README](src/port.jpg)
+![README](vis/0.jpg)
 
 # Proyecto Individual 2 D.A. Siniestros Viales Ciudad Autónoma de Buenos Aires
 
 En el presente repositorio se desarrolla un **análisis** de la problematica de siniestralidad en la capital de Argentina desde el rol de **Analista de Datos** para la Subsecretaría de Planificación de La Movilidad.
 
-![Int](src/R1.jpg)
+![Int](vis/11.jpg)
 
 ## Introducción
 
@@ -27,7 +27,7 @@ La Subsecretaría de Planificación de la Movilidad ha solicitado al analista de
 - Crear un tablero de presentación dinámico, con tonos de color apropiados y excelentes visualizaciones que permitan extraer información rápidamente.
 
 
-![r2](src/r2.jpg)
+![r2](vis/12.jpg)
 
 ## Descripción de la fuente de los datos
 
@@ -50,7 +50,7 @@ La plataforma de datos abiertos de la ciudad de Buenos Aires en el apartado de [
     - Victimas: Contiene los registros de cada una de las victimas registradas en la base de datos que fallecieron con información importante como su genero, edad y actor.
 
 
-![r3](src/r3.jpg)
+![r13](vis/13.jpg)
 
 ## El proceso
 
@@ -211,7 +211,10 @@ A continuación se hace una descripción y resumen de la metodología de trabajo
 
     - Adicionalmente podemos observar que los hombres son los que mayor número de victimas representan, por lo que es importan abarcar el problema de la siniestralidad desde la masculinización del tráfico, para entender patrones psicologicos o comportamientos que afecta a esta medida.
 
-- ## Autor
+![r14](vis/14.jpg)
+
+- ## Conclusiones
+
     El análisis de los datos revela varios aspectos significativos sobre la siniestralidad vial en la ciudad:
 
     El año 2019 se destaca por registrar el mayor número de siniestros, con un promedio diario de 28. Sin embargo, a principios del año 2020, se observa una disminución en el número de siniestros, atribuida a las restricciones de movilidad durante la pandemia. A partir de mayo de 2020, los siniestros vuelven a aumentar, alcanzando hasta 800 por mes. Adicionalmente, se identifican las horas pico de la tarde, particularmente a las 5:00 p.m., como el momento con mayor número de incidentes. Además, los viernes destacan como los días con mayor cantidad de siniestros, mostrando una tendencia de siniestralidad más alta en los días laborales en comparación con los fines de semana.
@@ -221,7 +224,7 @@ A continuación se hace una descripción y resumen de la metodología de trabajo
     En términos de modos de transporte, los vehículos automóviles son los más frecuentemente culpables en los siniestros y las motocicletas son las víctimas más comunes en los siniestros, junto con los peatones y ciclistas.
 
     Por último, el análisis de género y edad revela que los hombres representan la mayoría de las víctimas, especialmente en el grupo de adultos jóvenes entre 18 y 29 años. Esta información destaca la necesidad de abordar la seguridad vial desde una perspectiva de género y edad para implementar medidas más efectivas de prevención de siniestros.
-    
+
 
 - ## Autor
     [Duván Robayo Roa](https://github.com/duvanroarq/)
