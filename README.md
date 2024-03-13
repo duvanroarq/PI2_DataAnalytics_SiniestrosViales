@@ -1,9 +1,10 @@
 ![README](vis/0.jpg)
 
-# Proyecto Individual 2 D.A. Siniestros Viales Ciudad Autónoma de Buenos Aires
+# Proyecto Individual 2 D.A.
+## Siniestros Viales Ciudad Autónoma de Buenos Aires
 
 En el presente repositorio se desarrolla un **análisis** de la problematica de siniestralidad en la capital de Argentina desde el rol de **Analista de Datos** para la Subsecretaría de Planificación de La Movilidad.
-
+---
 ![Int](vis/11.jpg)
 
 ## Introducción
@@ -26,6 +27,7 @@ La Subsecretaría de Planificación de la Movilidad ha solicitado al analista de
 - Realizar un análisis exploratorio de los datos para identificar patrones, anomalías, outliers, medidas relevantes y comparar comportamientos de los datos.
 - Crear un tablero de presentación dinámico, con tonos de color apropiados y excelentes visualizaciones que permitan extraer información rápidamente.
 
+---
 
 ![r2](vis/12.jpg)
 
@@ -49,6 +51,7 @@ La plataforma de datos abiertos de la ciudad de Buenos Aires en el apartado de [
 
     - Victimas: Contiene los registros de cada una de las victimas registradas en la base de datos que fallecieron con información importante como su genero, edad y actor.
 
+---
 
 ![r13](vis/13.jpg)
 
